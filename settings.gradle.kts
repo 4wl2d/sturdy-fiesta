@@ -20,4 +20,5 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "VkSampleApp"
+include(":app")
  
