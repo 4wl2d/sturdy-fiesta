@@ -1,4 +1,4 @@
-package ind.wldd.vksampleapp.ui.theme
+package ind.wldd.vksampleapp.presentation.ui.theme
 
 import android.app.Activity
 import android.os.Build

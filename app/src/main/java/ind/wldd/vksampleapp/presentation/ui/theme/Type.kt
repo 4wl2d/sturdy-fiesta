@@ -1,4 +1,4 @@
-package ind.wldd.vksampleapp.ui.theme
+package ind.wldd.vksampleapp.presentation.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
