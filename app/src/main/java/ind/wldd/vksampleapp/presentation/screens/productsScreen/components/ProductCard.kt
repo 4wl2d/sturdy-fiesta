@@ -1,22 +1,31 @@
 package ind.wldd.vksampleapp.presentation.screens.productsScreen.components
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import ind.wldd.vksampleapp.domain.models.Product
 import ind.wldd.vksampleapp.presentation.screens.productsScreen.models.ProductItem
 import ind.wldd.vksampleapp.presentation.screens.productsScreen.models.toProductItem
+import ind.wldd.vksampleapp.presentation.ui.theme.GrayOnCard
 
 @Composable
 fun ProductCard(
@@ -24,18 +33,44 @@ fun ProductCard(
     product: ProductItem
 ) {
     Card(
-        modifier = modifier,
+        modifier = modifier
+            .width(180.dp),
         shape = RoundedCornerShape(10.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.White)
+        colors = CardDefaults.cardColors(containerColor = GrayOnCard)
     ) {
         Column(
             modifier = modifier
-                .padding(15.dp)
+                .fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Top
         ) {
-            ProductImage(data = product.thumbnail)
+            Box(
+                modifier = modifier
+                    .size(180.dp)
+                    .clip(RoundedCornerShape(10.dp))
+                    .background(Color.White),
+                contentAlignment = Alignment.BottomStart
+            ) {
+                ProductImage(data = product.thumbnail)
+                Box(modifier = modifier.padding(start = 5.dp, bottom = 5.dp)) {
+                    OnImageTransparentText(
+                        text = product.rating.toString()
+                    )
+                }
+            }
             Spacer(modifier = modifier.height(5.dp))
-            Text(text = product.title, style = MaterialTheme.typography.titleMedium)
+            Column(
+                modifier = modifier
+                    .fillMaxWidth()
+                    .padding(5.dp)
+            ) {
+                Text(text = product.title, style = MaterialTheme.typography.titleMedium)
+                Spacer(modifier = modifier.height(2.dp))
+                Text(text = product.description, color = Color.Gray, style = MaterialTheme.typography.bodySmall)
+                Spacer(modifier = modifier.height(10.dp))
+                OpenProductDetailsButton(text = product.price.toString())
+            }
         }
     }
 }
