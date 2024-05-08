@@ -23,7 +23,7 @@ class ProductsRepositoryImpl @Inject constructor(
             limit = pageSize
         )
         result = if (response.isSuccessful) {
-            response.body()?.products!!.map { it.toProduct() }
+            response.body()?.products!!.map { it.toProduct() } // !! -> плохая тема
         } else {
             emptyList()
         }

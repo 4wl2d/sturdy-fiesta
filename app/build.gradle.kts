@@ -18,7 +18,6 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -65,33 +64,30 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
     implementation(libs.kotlinx.collections.immutable)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.kotlinx.serialization.json)
 
-    // Paging 3
+    // I deleted most testing things
+
+    // Paging 3 (google pagination will be better than my realisation)
     implementation(libs.androidx.paging.runtime.ktx)
     implementation(libs.androidx.paging.compose)
 
-    // Arrow
+    // Arrow (for try/catch Either)
     implementation(libs.arrow.core)
     implementation(libs.arrow.fx.coroutines)
 
-    // Retrofit
+    // Retrofit (not Ktor, but I could)
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
 
-    // Coil
+    // Coil (the best option for Kotlin dev imho)
     implementation(libs.coil.compose)
 
-    // Dagger Hilt
+    // Dagger Hilt (I could use Koin/Kodein but I didn't)
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
     implementation(libs.androidx.hilt.navigation.compose)

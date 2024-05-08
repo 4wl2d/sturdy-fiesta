@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.dp
 fun OpenProductDetailsButton(
     text: String,
     modifier: Modifier = Modifier.clickable {
-        /* TODO */
+        // there will be the opener
     }
 ) {
     Box(
